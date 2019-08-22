@@ -31,6 +31,7 @@
 	<p id="info-p"></p>
 	<br>
 	<button id="continue-btn" class="btn">Continue</button>
+	<button id="new-game-btn" class="btn">New Game</button>
 
 <div class="modal fade" id="bet-modal">
 	<div class="modal-dialog">
@@ -67,6 +68,29 @@
 				<button id="back-bet-btn" class="btn">Back</button>
 				<br><br>
 				<p id="bet-message-p"></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="new-game-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">New Game</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<label>How Many Players?</label>
+				<select id="num-players-select" class="form-control">
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+				<br>
+				<button id="begin-game-btn" class="btn">Begin!</button>
 			</div>
 		</div>
 	</div>

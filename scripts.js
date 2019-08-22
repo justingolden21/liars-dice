@@ -39,11 +39,9 @@ function betIsValid(oldBet, newBet) {
 }
 
 $( ()=> {
-	newGame(3);
-
 	$('#raise-btn').click( ()=> {
 		$('#bet-modal').modal('show');
-	}).focus();
+	});
 
 	$('#back-bet-btn').click( ()=> {
 		$('#bet-modal').modal('hide');
@@ -95,6 +93,27 @@ $( ()=> {
 	$('#bet-modal').on('hidden.bs.modal', (e) => {
 		$('#raise-btn').focus();
 	});
+
+	$('#new-game-modal').modal('show');
+
+	$('#new-game-modal').on('shown.bs.modal', (e) => {
+		$('#num-players-select').focus();
+	});
+
+	$('#new-game-modal').on('hidden.bs.modal', (e) => {
+		$('#raise-btn').focus();
+	});
+
+	$('#new-game-btn').click( ()=> {
+		$('#new-game-modal').modal('show');
+	});
+
+	$('#begin-game-btn').click( ()=> {
+		newGame($('#num-players-select').val() );
+		$('#new-game-modal').modal('hide');
+	});
+
+	newGame(0);
 });
 
 let playerHands = [];
@@ -109,14 +128,27 @@ function newGame(numPlayers) {
 
 	$('#bet-modal').modal('hide');
 	$('#continue-btn').css('display','none');
+	$('#new-game-btn').css('display','none');
+
+	$('#message-p').html('');
 
 	newRound();
+	$('#continue-btn').click();
 }
 
 function newRound() {
-	for(let i=0; i<playerHands.length; i++) {
-		playerHands[i] = getHand(playerHands[i].length);
+	let winner = checkGameOver();
+	if(winner != -1) {
+		$('#info-p').html('Player ' + winner + ' wins!');
+		$('#new-game-btn').css('display','').focus();
+		return;
 	}
+	// --------------------------------
+
+	$('#continue-btn').css('display','').focus();
+
+	for(let i=0; i<playerHands.length; i++)
+		playerHands[i] = getHand(playerHands[i].length);
 
 	renderHands();
 	currentBet = null;
@@ -130,9 +162,11 @@ function newRound() {
 }
 
 function nextPlayer() {
-	currentPlayer++;
-	if(currentPlayer > playerHands.length+1)
-		currentPlayer = 1;
+	do {
+		currentPlayer++;
+		if(currentPlayer > playerHands.length)
+			currentPlayer = 1;
+	} while(playerHands[currentPlayer-1].length==0);
 
 	$('#main-body').css('display','none');
 	$('#continue-btn').css('display','').focus();
@@ -174,7 +208,6 @@ function playerLose(playerNum) {
 
 	$('#message-p').html('Player ' + playerNum + ' lost their bet');
 	$('#main-body').css('display','none');
-	$('#continue-btn').css('display','').focus();
 }
 
 function playerWin(playerNum) {
@@ -187,5 +220,19 @@ function playerWin(playerNum) {
 
 	$('#message-p').html('Player ' + playerNum + ' won their spot');
 	$('#main-body').css('display','none');
-	$('#continue-btn').css('display','').focus();
+}
+
+// return -1 if game isn't over, otherwise playerNum of winner
+function checkGameOver() {
+	let numPlayers = 0;
+	let winnerIdx;
+	for(let i=0; i<playerHands.length; i++) {
+		if(playerHands[i].length!=0) {
+			numPlayers++;
+			winnerIdx = i;
+		}
+	}
+	if(numPlayers!=1)
+		return -1;
+	return winnerIdx+1;
 }
