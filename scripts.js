@@ -86,21 +86,21 @@ $( ()=> {
 		$('#raise-btn').focus();
 	});
 
-	$('#bet-modal').on('shown.bs.modal', (e) => {
+	$('#bet-modal').on('shown.bs.modal', (e)=> {
 		$('#bet-amount-select').focus();
 	});
 
-	$('#bet-modal').on('hidden.bs.modal', (e) => {
+	$('#bet-modal').on('hidden.bs.modal', (e)=> {
 		$('#raise-btn').focus();
 	});
 
 	$('#new-game-modal').modal('show');
 
-	$('#new-game-modal').on('shown.bs.modal', (e) => {
+	$('#new-game-modal').on('shown.bs.modal', (e)=> {
 		$('#num-players-select').focus();
 	});
 
-	$('#new-game-modal').on('hidden.bs.modal', (e) => {
+	$('#new-game-modal').on('hidden.bs.modal', (e)=> {
 		$('#raise-btn').focus();
 	});
 
@@ -114,6 +114,9 @@ $( ()=> {
 	});
 
 	newGame(0);
+	$('#main-body').css('display','none');
+	$('#info-p').html('');
+	$('#new-game-btn').css('display','');
 });
 
 let playerHands = [];
@@ -134,6 +137,7 @@ function newGame(numPlayers) {
 
 	newRound();
 	$('#continue-btn').click();
+	$('#main-body').css('display','');
 }
 
 function newRound() {
