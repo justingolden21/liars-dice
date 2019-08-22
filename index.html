@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Liar's Dice</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+	<script src="scripts.js"></script>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h1><i class="fas fa-dice"></i> Pass the Phone &mdash; Liar's Dice</h1>
+	<div id="main-body">
+
+	<br>
+	
+	<p id="player-hands"></p>
+
+	<button id="raise-btn" class="btn">Raise</button>
+	<button id="call-btn" class="btn">Call</button>
+	<button id="spot-btn" class="btn">Spot</button>
+
+	</div>
+	<br>
+	<p id="message-p"></p>
+	<p id="info-p"></p>
+	<br>
+	<button id="continue-btn" class="btn">Continue</button>
+
+<div class="modal fade" id="bet-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Raise the Bet</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<label>Amount:</label>
+				<select id="bet-amount-select" class="form-control">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+				<br>
+				<label>Value:</label>
+				<select id="bet-value-select" class="form-control">
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+				<br>
+				<button id="submit-bet-btn" class="btn">Submit Bet</button>
+				<button id="back-bet-btn" class="btn">Back</button>
+				<br><br>
+				<p id="bet-message-p"></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

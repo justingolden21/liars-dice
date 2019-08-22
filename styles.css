@@ -1,0 +1,14 @@
+* {
+	text-align: center;
+}
+body {
+	margin: 50px;
+}
+.fas:not(.fa-dice) {
+	color: #333;
+	box-shadow: 2px 2px 0px #000;
+	border-radius: 10%;
+}
+.fas.fa-dice-one {
+	color: #666;
+}
