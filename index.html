@@ -14,26 +14,22 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<p><b><i class="fas fa-dice"></i> Pass the Phone &mdash; Liar's Dice</b></p>
-	<div id="main-body">
-
-	<br>
-	
+<p><b><i class="fas fa-dice"></i> Pass the Phone &mdash; Liar's Dice</b></p>
+<hr>
+<div id="main-body">
 	<p id="player-hands"></p>
-
 	<br>
+	<button id="raise-btn" class="btn btn-dark"><i class="fas fa-level-up-alt"></i> Raise</button>
+	<button id="call-btn" class="btn btn-dark"><i class="fas fa-ban"></i> Call</button>
+	<button id="spot-btn" class="btn btn-dark"><i class="fas fa-bullseye"></i> Spot On</button>
+	<hr>
+</div>
 
-	<button id="raise-btn" class="btn"><i class="fas fa-level-up-alt"></i> Raise</button>
-	<button id="call-btn" class="btn"><i class="fas fa-ban"></i> Call</button>
-	<button id="spot-btn" class="btn"><i class="fas fa-bullseye"></i> Spot On</button>
-
-	</div>
-	<br>
-	<p id="message-p"></p>
-	<p id="info-p"></p>
-	<br>
-	<button id="continue-btn" class="btn">Continue <i class="fas fa-long-arrow-alt-right"></i></button>
-	<button id="new-game-btn" class="btn"><i class="fas fa-dice"></i> New Game</button>
+<p id="message-p"></p>
+<p id="info-p"></p>
+<br>
+<button id="continue-btn" class="btn btn-dark">Continue <i class="fas fa-long-arrow-alt-right"></i></button>
+<button id="new-game-btn" class="btn btn-dark"><i class="fas fa-dice"></i> New Game</button>
 
 <div class="modal fade" id="bet-modal">
 	<div class="modal-dialog">
@@ -66,8 +62,8 @@
 					<option value="6">6</option>
 				</select>
 				<br>
-				<button id="back-bet-btn" class="btn"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
-				<button id="submit-bet-btn" class="btn"><i class="fas fa-check"></i> Submit Bet</button>
+				<button id="back-bet-btn" class="btn btn-dark"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+				<button id="submit-bet-btn" class="btn btn-dark"><i class="fas fa-check"></i> Submit Bet</button>
 				<br><br>
 				<p id="bet-message-p"></p>
 			</div>
@@ -92,7 +88,7 @@
 					<option value="6">6</option>
 				</select>
 				<br>
-				<button id="begin-game-btn" class="btn">Begin! <i class="fas fa-long-arrow-alt-right"></i></button>
+				<button id="begin-game-btn" class="btn btn-dark">Begin! <i class="fas fa-long-arrow-alt-right"></i></button>
 			</div>
 		</div>
 	</div>

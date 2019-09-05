@@ -1,3 +1,4 @@
+/* generic */
 * {
 	text-align: center;
 }
@@ -6,14 +7,30 @@ body {
 }
 p, button, label, h4 {
 	font-size: 150% !important;
+	color: #333;
 }
+::-moz-selection {
+	background: #666 !important;
+	color: #fff;
+}
+::selection {
+	background: #666 !important;
+	color: #fff;
+}
+
+/* specific */
 button {
 	margin: 10px;
 }
-.fa-dice-one, .fa-dice-two, .fa-dice-three, .fa-dice-four, .fa-dice-five, .fa-dice-six {
+
+/* dice */
+.fa-dice-one, .fa-dice-two, .fa-dice-three, .fa-dice-four, .fa-dice-five, .fa-dice-six, .fa-square {
 	color: #333;
 	box-shadow: 4px 4px 0px #000;
 	border-radius: 10%;
+
+	font-size: 150%;
+	margin: 5px;
 }
 .fas.fa-dice-one {
 	color: #666;

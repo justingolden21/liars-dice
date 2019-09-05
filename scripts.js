@@ -17,9 +17,8 @@ function getCount(hands, num) {
 	let count = 0;
 	for(let i=0; i<hands.length; i++) {
 		for(let j=0; j<hands[i].length; j++) {
-			if(hands[i][j]==num || hands[i][j]==1) {
+			if(hands[i][j]==num || hands[i][j]==1)
 				count++;
-			}
 		}
 	}
 	return count;
@@ -68,24 +67,20 @@ $( ()=> {
 	$('#call-btn').click( ()=> {
 		$('#message-p').html('');
 		let count = getCount(playerHands, currentBet.value);
-		if(currentBet.amount > count) {
+		if(currentBet.amount > count)
 			playerLose(currentBet.player, count);
-		}
-		else {
+		else
 			playerLose(currentPlayer, count);
-		}
 		newRound();
 	});
 
 	$('#spot-btn').click( ()=> {
 		$('#message-p').html('');
 		let count = getCount(playerHands, currentBet.value);
-		if(currentBet.amount == count) {
+		if(currentBet.amount == count)
 			playerWin(currentPlayer);
-		}
-		else {
+		else
 			playerLose(currentPlayer, count, true);
-		}
 		newRound();
 	});
 
@@ -129,19 +124,16 @@ $( ()=> {
 });
 
 let playerHands = [];
-let currentBet;
-let currentPlayer;
+let currentBet, currentPlayer;
 function newGame(numPlayers) {
-	for(let i=0; i<numPlayers; i++) {
+	for(let i=0; i<numPlayers; i++)
 		playerHands.push([0,0,0,0,0]);
-	}
 
 	currentPlayer = 1;
 
 	$('#bet-modal').modal('hide');
 	$('#continue-btn').css('display','none');
 	$('#new-game-btn').css('display','none');
-
 	$('#message-p').html('');
 
 	newRound();
@@ -194,9 +186,9 @@ function renderHand(hand, playerNum) {
 		else
 			handHTML += '<i class="fas fa-square"></i> ';
 	}
-
 	$('#player-hands').append('Player ' + playerNum + ': ' + handHTML + '<br>');
 }
+
 function renderHands() {
 	$('#player-hands').html('');
 	for(let i=0; i<playerHands.length; i++) {
@@ -206,16 +198,19 @@ function renderHands() {
 			renderHand(new Array(playerHands[i].length).fill(-1), i+1);
 	}
 }
+
 // function renderAllHands() {
 // 	$('#player-hands').html('');
 // 	for(let i=0; i<playerHands.length; i++)
 // 		renderHand(playerHands[i], i+1);
 // }
+
 function renderInfo() {
 	$('#info-p').html('Player ' + currentPlayer + '\'s turn');
 	if(currentBet!=null)
-		$('#info-p').append('<br>Current bet: Player ' + currentBet.player + ' bet ' + getBetStr() );
+		$('#info-p').append('<br><br>Current bet: Player ' + currentBet.player + ' bet ' + getBetStr() );
 }
+
 function getBetStr() {
 	return currentBet.amount + ' ' + currentBet.value + (currentBet.amount>1 ? 's' : '');
 }
