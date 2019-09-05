@@ -49,6 +49,7 @@ $( ()=> {
 
 	$('#submit-bet-btn').click( ()=> {
 		if(betIsValid(currentBet, new Bet(-1, $('#bet-amount-select').val(), $('#bet-value-select').val() ) ) ) {
+			$('#message-p').html('');
 			currentBet = new Bet(currentPlayer, $('#bet-amount-select').val(), $('#bet-value-select').val() );
 			nextPlayer();
 			renderHands();
@@ -65,18 +66,26 @@ $( ()=> {
 	});
 
 	$('#call-btn').click( ()=> {
-		if(currentBet.amount > getCount(playerHands, currentBet.value) )
-			playerLose(currentBet.player);
-		else
-			playerLose(currentPlayer);
+		$('#message-p').html('');
+		let count = getCount(playerHands, currentBet.value);
+		if(currentBet.amount > count) {
+			playerLose(currentBet.player, count);
+		}
+		else {
+			playerLose(currentPlayer, count);
+		}
 		newRound();
 	});
 
 	$('#spot-btn').click( ()=> {
-		if(currentBet.amount == getCount(playerHands, currentBet.value) )
+		$('#message-p').html('');
+		let count = getCount(playerHands, currentBet.value);
+		if(currentBet.amount == count) {
 			playerWin(currentPlayer);
-		else
-			playerLose(currentPlayer);
+		}
+		else {
+			playerLose(currentPlayer, count, true);
+		}
 		newRound();
 	});
 
@@ -197,20 +206,27 @@ function renderHands() {
 			renderHand(new Array(playerHands[i].length).fill(-1), i+1);
 	}
 }
-
+// function renderAllHands() {
+// 	$('#player-hands').html('');
+// 	for(let i=0; i<playerHands.length; i++)
+// 		renderHand(playerHands[i], i+1);
+// }
 function renderInfo() {
 	$('#info-p').html('Player ' + currentPlayer + '\'s turn');
 	if(currentBet!=null)
-		$('#info-p').append('<br>Current bet: Player ' + currentBet.player + ' bet ' + currentBet.amount + ' ' + currentBet.value
-			+ (currentBet.amount>1 ? 's' : '') );
+		$('#info-p').append('<br>Current bet: Player ' + currentBet.player + ' bet ' + getBetStr() );
+}
+function getBetStr() {
+	return currentBet.amount + ' ' + currentBet.value + (currentBet.amount>1 ? 's' : '');
 }
 
-function playerLose(playerNum) {
+function playerLose(playerNum, count, isSpot = false) {
 	playerHands[playerNum-1].pop();
 
 	currentPlayer = playerNum;
 
-	$('#message-p').html('Player ' + playerNum + ' lost their bet');
+	$('#message-p').html('Player ' + playerNum + ' lost ' + (isSpot ? 'their spot' : 'on bet') + 
+		' of ' + getBetStr() + '. There ' + (count == 1 ? 'was' : 'were') + ' ' + count + '.');
 	$('#main-body').css('display','none');
 }
 
@@ -222,7 +238,7 @@ function playerWin(playerNum) {
 
 	currentPlayer = playerNum;
 
-	$('#message-p').html('Player ' + playerNum + ' won their spot');
+	$('#message-p').html('Player ' + playerNum + ' won their spot of ' + getBetStr() );
 	$('#main-body').css('display','none');
 }
 
