@@ -1,0 +1,35 @@
+==== todo ====
+
+option for player names (find everywhere it says 'Player ')
+
+display dice after round ends? eh, already tell them the count
+
+history of game in details summary or in modal?
+
+add rules modal?
+
+make it a PWA?
+
+keep track of number of times each player has won?
+
+option to use number of dice other than 5?
+
+dynamically make the select for the bet such that the number can go higher? make equal to number of dice out?
+
+add an AI? dropdown is also number of AI from 0-6, players from 1-6
+
+==== notes ====
+
+make server? host and join? log files:
+'new game', player IDs
+'new round', player hands
+'move', move made, player ID
+'move', move made, player ID
+'new round', player hands
+'move', move made, player ID
+'move', move made, player ID
+'move', move made, player ID
+'game over'
+
+replace strings with enumerated ints
+AI can learn off of other players?

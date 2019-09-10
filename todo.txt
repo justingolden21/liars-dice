@@ -1,9 +1,0 @@
-todo
-
-option for player names (find everywhere it says 'Player ')
-
-display dice after round ends? eh, already tell them the count
-
-history of game in details summary or in modal?
-
-add rules modal?

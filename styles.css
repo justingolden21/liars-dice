@@ -36,6 +36,9 @@ button {
 	color: #666;
 	box-shadow: 4px 4px 0px #666;
 }
+hr {
+	border-color: #333;
+}
 
 @media screen and (max-width: 768px) { /*small*/
 	.fa-dice-one, .fa-dice-two, .fa-dice-three, .fa-dice-four, .fa-dice-five, .fa-dice-six, .fa-square {

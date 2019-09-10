@@ -189,21 +189,15 @@ function renderHand(hand, playerNum) {
 	$('#player-hands').append('Player ' + playerNum + ': ' + handHTML + '<br>');
 }
 
-function renderHands() {
+function renderHands(renderAll=false) {
 	$('#player-hands').html('');
 	for(let i=0; i<playerHands.length; i++) {
-		if(currentPlayer==i+1)
+		if(currentPlayer==i+1 || renderAll)
 			renderHand(playerHands[i], i+1);
 		else
 			renderHand(new Array(playerHands[i].length).fill(-1), i+1);
 	}
 }
-
-// function renderAllHands() {
-// 	$('#player-hands').html('');
-// 	for(let i=0; i<playerHands.length; i++)
-// 		renderHand(playerHands[i], i+1);
-// }
 
 function renderInfo() {
 	$('#info-p').html('Player ' + currentPlayer + '\'s turn');

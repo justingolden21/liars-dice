@@ -1,0 +1,11 @@
+AI notes
+
+input:
+AI hand
+total num dice
+current bet
+
+output:
+raise bet to what
+call
+spot
