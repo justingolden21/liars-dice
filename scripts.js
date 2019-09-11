@@ -220,6 +220,7 @@ function playerLose(playerNum, count, isSpot = false) {
 	$('#main-body').css('display','none');
 	
 	$('#end-display-p').css('display','');
+	$('#end-display-p').html('');
 	renderHands(true, $('#end-display-p'), false);
 }
 
@@ -235,6 +236,7 @@ function playerWin(playerNum) {
 	$('#main-body').css('display','none');
 
 	$('#end-display-p').css('display','');
+	$('#end-display-p').html('');
 	renderHands(true, $('#end-display-p'), false);
 }
 
