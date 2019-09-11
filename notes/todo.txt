@@ -12,8 +12,6 @@ keep track of number of times each player has won?
 
 option to use number of dice other than 5?
 
-dynamically make the select for the bet such that the number can go higher? make equal to number of dice out?
-
 add an AI? dropdown is also number of AI from 0-6, players from 1-6
 
 ==== notes ====

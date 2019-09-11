@@ -43,6 +43,7 @@ function newRound() {
 	$('#call-btn').prop('disabled', true);
 	$('#spot-btn').prop('disabled', true);
 
+	makeNumDropdown($('#bet-amount-select'), numDice(playerHands) );
 	$('#bet-amount-select').val('1');
 	$('#bet-value-select').val('2');
 }
@@ -102,7 +103,7 @@ function playerLose(playerNum, count, isSpot = false) {
 function playerWin(playerNum) {
 	for(let i=0; i<playerHands.length; i++) {
 		if(i != playerNum-1)
-		playerHands[i].pop();
+			playerHands[i].pop();
 	}
 	currentPlayer = playerNum;
 
@@ -116,4 +117,12 @@ function endRound() {
 	$('#end-display-p').css('display','');
 	$('#end-display-p').html('');
 	renderHands(true, $('#end-display-p'), false);
+}
+
+// misc
+function makeNumDropdown(elm, max) {
+	let tmpHTML = '';
+	for(let i=1; i<=max; i++)
+		tmpHTML += '<option value="' + i + '">' + i + '</option>';
+	elm.html(tmpHTML);
 }

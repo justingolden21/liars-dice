@@ -16,5 +16,5 @@ function betIsValid(oldBet, newBet) {
 
 // for printing current bet
 function getBetStr() {
-	return currentBet.amount + ' ' + currentBet.value + (currentBet.amount>1 ? 's' : '');
+	return currentBet.amount + ' ' + currentBet.value + (currentBet.amount > 1 ? 's' : '');
 }

@@ -23,12 +23,20 @@ function getCount(hands, num) {
 	return count;
 }
 
+// count number of dice total
+function numDice(hands) {
+	let count = 0;
+	for(let i=0; i<hands.length; i++)
+		count += hands[i].length;
+	return count;
+}
+
 // return -1 if game isn't over, otherwise playerNum of winner
-function checkGameOver(playerHands) {
+function checkGameOver(hands) {
 	let numPlayers = 0;
 	let winnerIdx;
-	for(let i=0; i<playerHands.length; i++) {
-		if(playerHands[i].length!=0) {
+	for(let i=0; i<hands.length; i++) {
+		if(hands[i].length!=0) {
 			numPlayers++;
 			winnerIdx = i;
 		}
