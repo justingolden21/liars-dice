@@ -19,7 +19,7 @@ p, button, label, h4, select {
 }
 
 /* specific */
-button {
+button:not(.close) {
 	margin: 10px;
 	color: #fff !important;
 }
