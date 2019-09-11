@@ -5,9 +5,9 @@
 body {
 	margin: 50px;
 }
-p, button, label, h4 {
+p, button, label, h4, select {
 	font-size: 150% !important;
-	color: #333;
+	color: #333 !important;
 }
 ::-moz-selection {
 	background: #666 !important;
@@ -21,23 +21,27 @@ p, button, label, h4 {
 /* specific */
 button {
 	margin: 10px;
+	color: #fff !important;
+}
+button i {
+	color: #66c;
 }
 
 /* dice */
 .fa-dice-one, .fa-dice-two, .fa-dice-three, .fa-dice-four, .fa-dice-five, .fa-dice-six, .fa-square {
-	color: #333;
-	box-shadow: 4px 4px 0px #000;
+	color: #339;
+	box-shadow: 4px 4px 0px #333;
 	border-radius: 10%;
 
 	font-size: 150%;
 	margin: 5px;
 }
 .fas.fa-dice-one {
-	color: #666;
-	box-shadow: 4px 4px 0px #666;
+	color: #333;
+	box-shadow: 4px 4px 0px #333;
 }
 hr {
-	border-color: #333;
+	border: 1px solid #333;
 }
 
 @media screen and (max-width: 768px) { /*small*/
