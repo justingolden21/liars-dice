@@ -1,4 +1,5 @@
 /* generic */
+
 * {
 	text-align: center;
 }
@@ -19,6 +20,7 @@ p, button, label, h4, select {
 }
 
 /* specific */
+
 button:not(.close) {
 	margin: 10px;
 	color: #fff !important;
@@ -26,9 +28,13 @@ button:not(.close) {
 button i {
 	color: #66c;
 }
+hr {
+	border: 1px solid #333;
+}
 
 /* dice */
-.fa-dice-one, .fa-dice-two, .fa-dice-three, .fa-dice-four, .fa-dice-five, .fa-dice-six, .fa-square {
+
+.dice-icon {
 	color: #339;
 	box-shadow: 4px 4px 0px #333;
 	border-radius: 10%;
@@ -40,12 +46,11 @@ button i {
 	color: #333;
 	box-shadow: 4px 4px 0px #333;
 }
-hr {
-	border: 1px solid #333;
-}
 
-@media screen and (max-width: 768px) { /*small*/
-	.fa-dice-one, .fa-dice-two, .fa-dice-three, .fa-dice-four, .fa-dice-five, .fa-dice-six, .fa-square {
+/* media */
+
+@media screen and (max-width: 768px) {
+	.dice-icon {
 		font-size: 120%;
 		margin: 2px;
 	}
