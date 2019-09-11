@@ -88,6 +88,7 @@ $( ()=> {
 		$('#main-body').css('display','');
 		$('#continue-btn').css('display','none');
 		$('#raise-btn').focus();
+		$('#end-display-p').css('display','none');
 	});
 
 	$('#bet-modal').on('shown.bs.modal', (e)=> {
@@ -178,7 +179,7 @@ function nextPlayer() {
 }
 
 let numNames = 'zero one two three four five six'.split(' ');
-function renderHand(hand, playerNum) {
+function renderHand(hand, playerNum, elm) {
 	let handHTML = '';
 	for(let i=0; i<hand.length; i++) {
 		if(hand[i]!=-1)
@@ -186,16 +187,16 @@ function renderHand(hand, playerNum) {
 		else
 			handHTML += '<i class="fas fa-square"></i> ';
 	}
-	$('#player-hands').append('Player ' + playerNum + ': ' + handHTML + '<br>');
+	elm.append('Player ' + playerNum + ': ' + handHTML + '<br>');
 }
 
-function renderHands(renderAll=false) {
-	$('#player-hands').html('');
+function renderHands(renderAll=false, elm=$('#player-hands'), clear=true) {
+	if(clear) elm.html('');
 	for(let i=0; i<playerHands.length; i++) {
 		if(currentPlayer==i+1 || renderAll)
-			renderHand(playerHands[i], i+1);
+			renderHand(playerHands[i], i+1, elm);
 		else
-			renderHand(new Array(playerHands[i].length).fill(-1), i+1);
+			renderHand(new Array(playerHands[i].length).fill(-1), i+1, elm);
 	}
 }
 
@@ -214,9 +215,12 @@ function playerLose(playerNum, count, isSpot = false) {
 
 	currentPlayer = playerNum;
 
-	$('#message-p').html('Player ' + playerNum + ' lost ' + (isSpot ? 'their spot' : 'on bet') + 
-		' of ' + getBetStr() + '. There ' + (count == 1 ? 'was' : 'were') + ' ' + count + '.');
+	$('#message-p').html('Player ' + playerNum + ' lost ' + (isSpot ? 'their spot on' : 'on bet') + 
+		' of ' + getBetStr() + '. There ' + (count == 1 ? 'was' : 'were') + ' ' + count + '.<br>');
 	$('#main-body').css('display','none');
+	
+	$('#end-display-p').css('display','');
+	renderHands(true, $('#end-display-p'), false);
 }
 
 function playerWin(playerNum) {
@@ -227,8 +231,11 @@ function playerWin(playerNum) {
 
 	currentPlayer = playerNum;
 
-	$('#message-p').html('Player ' + playerNum + ' won their spot of ' + getBetStr() );
+	$('#message-p').html('Player ' + playerNum + ' won their spot on of ' + getBetStr() + '.<br>');
 	$('#main-body').css('display','none');
+
+	$('#end-display-p').css('display','');
+	renderHands(true, $('#end-display-p'), false);
 }
 
 // return -1 if game isn't over, otherwise playerNum of winner
