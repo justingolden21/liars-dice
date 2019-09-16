@@ -38,7 +38,7 @@ hr {
 /* dice */
 
 .dice-icon {
-	color: #339;
+	color: #333;
 	box-shadow: 4px 4px 0px #333;
 	border-radius: 10%;
 
@@ -46,7 +46,7 @@ hr {
 	margin: 5px;
 }
 .fas.fa-dice-one {
-	color: #333;
+	color: #339;
 	box-shadow: 4px 4px 0px #333;
 }
 
