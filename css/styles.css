@@ -5,6 +5,7 @@
 }
 body {
 	margin: 50px;
+	background-image: url('../img/icon-opacity.svg');
 }
 p, button, label, h4 {
 	font-size: 150% !important;
