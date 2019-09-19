@@ -27,7 +27,7 @@ p, label, .modal-title {
 	color: #fff;
 }
 
-/* specific */
+/* buttons */
 
 button:not(.close) {
 	margin: 10px;
@@ -41,11 +41,30 @@ button:not(:disabled):hover i {
 	transform: scale(1.25);
 }
 
-select {
-	color: #333;
+#settings-btn i {
+	color: #fff;
 }
-hr {
-	border: 1px solid #333;
+#settings-btn:hover i {
+	transform: rotate(60deg);
+}
+
+/* carousel */
+
+.carousel-control-next, .carousel-control-prev, .carousel-indicators li {
+	/* make them black */
+	filter: invert(100%);
+}
+.carousel-inner {
+	padding: 20px;
+}
+.carousel-control-next, .carousel-control-prev {
+	width: 20px;
+	height: 20px;
+	padding: 5px;
+	border-radius: 50%;
+}
+.carousel-control-next:hover, .carousel-control-prev:hover {
+	background-color: #333;
 }
 
 /* dice */
@@ -63,6 +82,16 @@ hr {
 	box-shadow: 4px 4px 0px #333;
 }
 
+/* other */
+
+select {
+	color: #333;
+}
+hr {
+	border: 1px solid #333;
+	width: 50%;
+}
+
 /* media */
 
 @media screen and (max-width: 768px) {
@@ -72,5 +101,8 @@ hr {
 	}
 	p:not(.tab-pane p), button:not(.btn-sm), label.label-lg, h4 {
 		font-size: 120% !important;
+	}
+	hr {
+		width: 90%;
 	}
 }

@@ -127,22 +127,50 @@
 						<select id="num-dice-select" class="form-control"></select>
 						<br>
 						<button id="reset-settings-btn" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Reset Settings</button>
+						<button id="fullscreen-btn" class="btn btn-dark btn-sm"><i class="fas fa-compress"></i> Fullscreen</button>
 						<button id="end-game-btn" class="btn btn-dark btn-sm"><i class="fas fa-hourglass-end"></i> End Game</button>
 					</div>
 					<div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
 						<br>
-						<p>Liar's Dice is a simple game about rolling dice and bluffing.</p>
-						<p>The goal of the game is to be the last one standing.</p>
-						<p>Each player starts with 5 dice.</p>
-						<p>At the start of each round, players roll their "hand" of dice.</p>
-						<p>Hands are hidden from other players.</p>
-						<p>Ones are "wild cards" and count as all other numbers (2-6)</p>
-						<p>Players take turns raising the bet, until a player "calls" or "spots" the bet.</p>
-						<p>When you raise the bet, you're claiming that there are <b>at least</b> that many of a certain type of die. For example, the bet "five threes" means that there are at least five dice that have a three (or one) on them, across all players' hands.</p>
-						<p>Bets can only be raised higher than the previous bet. The number of dice is more important than the value. Players cannot bet on ones.</p>
-						<p>If a player calls a bet, they are claiming that it's false. The player who is wrong (between the betting player and the calling player) loses a dice, and then a new round begins, and players roll their dice again.</p>
-						<p>If a player spots, they are claiming that there are <b>exactly</b> that many of that die. If they are wrong they lose a die, but if they are correct, <b>every</b> other player loses a die.</p>
-						<p>When you run out of dice, you lose, and the last one standing wins!</p>
+
+						<!-- begin carousel -->
+						<div id="rules-carousel" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								<li data-target="#rules-carousel" data-slide-to="0" class="active"></li>
+								<li data-target="#rules-carousel" data-slide-to="1"></li>
+								<li data-target="#rules-carousel" data-slide-to="2"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<p>Liar's Dice is a simple game about rolling dice and bluffing.</p>
+									<p>The goal of the game is to be the last one standing.</p>
+									<p>Each player starts with 5 dice.</p>
+									<p>At the start of each round, players roll their "hand" of dice.</p>
+									<p>Hands are hidden from other players.</p>
+								</div>
+								<div class="carousel-item">
+									<p>Ones are "wild cards" and count as all other numbers (2-6)</p>
+									<p>Players take turns raising the bet, until a player "calls" or "spots" the bet.</p>
+									<p>When you raise the bet, you're claiming that there are <b>at least</b> that many of a certain type of die. For example, the bet "five threes" means that there are at least five dice that have a three (or one) on them, across all players' hands.</p>
+									<p>Bets can only be raised higher than the previous bet. The number of dice is more important than the value. Players cannot bet on ones.</p>
+								</div>
+								<div class="carousel-item">
+									<p>If a player calls a bet, they are claiming that it's false. The player who is wrong (between the betting player and the calling player) loses a dice, and then a new round begins, and players roll their dice again.</p>
+									<p>If a player spots, they are claiming that there are <b>exactly</b> that many of that die. If they are wrong they lose a die, but if they are correct, <b>every</b> other player loses a die.</p>
+									<p>When you run out of dice, you lose, and the last one standing wins!</p>
+								</div>
+							</div>
+							<a class="carousel-control-prev" href="#rules-carousel" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#rules-carousel" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+						<!-- end carousel -->
+						
 					</div>
 					<div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
 						<br>
@@ -156,6 +184,8 @@
 		</div>
 	</div>
 </div>
+
+
 
 </body>
 </html>
