@@ -10,8 +10,8 @@
 	<!-- CDNs -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 	<!-- local files -->
 	<link rel="stylesheet" href="css/styles.css">
@@ -23,7 +23,10 @@
 </head>
 <body>
 
-<p><b><i class="fas fa-dice"></i> Pass the Phone &mdash; Liar's Dice</b></p>
+<p>
+	<b><i class="fas fa-dice"></i> Pass the Phone &mdash; Liar's Dice</b>
+	<button id="settings-btn" title="Settings" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#settings-modal"><i class="fas fa-cog"></i> </button>
+</p>
 <hr>
 
 <div id="main-body">
@@ -51,10 +54,10 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				<label>Amount:</label>
+				<label class="label-lg">Amount:</label>
 				<select id="bet-amount-select" class="form-control"></select>
 				<br>
-				<label>Value:</label>
+				<label class="label-lg">Value:</label>
 				<select id="bet-value-select" class="form-control form-control-lg">
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -80,16 +83,75 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				<label>How Many Players?</label>
+				<label class="label-lg">How Many Players?</label>
 				<select id="num-players-select" class="form-control form-control-lg">
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
 					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
 				</select>
 				<br>
 				<button id="begin-game-btn" class="btn btn-dark">Begin! <i class="fas fa-long-arrow-alt-right"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="settings-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"><i class="fas fa-cog"></i> Settings and More</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="true"><i class="fas fa-cog"></i> Settings</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false"><i class="fas fa-dice"></i> How to Play</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fas fa-history"></i> History</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+						<br>
+						<label>Dice Per Player:</label>
+						<select id="num-dice-select" class="form-control"></select>
+						<br>
+						<button id="reset-settings-btn" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Reset Settings</button>
+						<button id="end-game-btn" class="btn btn-dark btn-sm"><i class="fas fa-hourglass-end"></i> End Game</button>
+					</div>
+					<div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+						<br>
+						<p>Liar's Dice is a simple game about rolling dice and bluffing.</p>
+						<p>The goal of the game is to be the last one standing.</p>
+						<p>Each player starts with 5 dice.</p>
+						<p>At the start of each round, players roll their "hand" of dice.</p>
+						<p>Hands are hidden from other players.</p>
+						<p>Ones are "wild cards" and count as all other numbers (2-6)</p>
+						<p>Players take turns raising the bet, until a player "calls" or "spots" the bet.</p>
+						<p>When you raise the bet, you're claiming that there are <b>at least</b> that many of a certain type of die. For example, the bet "five threes" means that there are at least five dice that have a three (or one) on them, across all players' hands.</p>
+						<p>Bets can only be raised higher than the previous bet. The number of dice is more important than the value. Players cannot bet on ones.</p>
+						<p>If a player calls a bet, they are claiming that it's false. The player who is wrong (between the betting player and the calling player) loses a dice, and then a new round begins, and players roll their dice again.</p>
+						<p>If a player spots, they are claiming that there are <b>exactly</b> that many of that die. If they are wrong they lose a die, but if they are correct, <b>every</b> other player loses a die.</p>
+						<p>When you run out of dice, you lose, and the last one standing wins!</p>
+					</div>
+					<div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+						<br>
+						<button id="clear-history-btn" class="btn btn-dark btn-sm"><i class="fas fa-trash"></i> Clear</button>
+						<br>
+						<span id="history-span"></span>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>

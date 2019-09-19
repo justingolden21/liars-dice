@@ -76,6 +76,10 @@ $( ()=> {
 		$('#new-game-btn').focus();
 	});
 
+	$('#settings-modal').on('shown.bs.modal', (e)=> {
+		$('#settings-tab').focus();
+	});
+
 	// new game listeners
 
 	$('#new-game-btn').click( ()=> {
@@ -83,7 +87,8 @@ $( ()=> {
 	});
 
 	$('#begin-game-btn').click( ()=> {
-		newGame($('#num-players-select').val() );
+		// num players, dice per player
+		newGame(parseInt($('#num-players-select').val() ), parseInt($('#num-dice-select').val() ) );
 		$('#new-game-modal').modal('hide');
 	});
 
@@ -92,5 +97,21 @@ $( ()=> {
 	$('#new-game-modal').modal('show');
 	$('#continue-btn').css('display','none');
 	$('#main-body').css('display','none');
+
+	// settings
+
+	$('#clear-history-btn').click( ()=> {
+		$('#history-span').html('');
+	});
+
+	$('#reset-settings-btn').click( ()=> {
+		$('#num-dice-select').val('5');
+	});
+
+	$('#end-game-btn').click(endGame);
+
+	// dropdowns
+
+	makeNumDropdown($('#num-dice-select'), 20, 5);
 	
 });

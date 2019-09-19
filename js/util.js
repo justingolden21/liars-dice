@@ -45,3 +45,17 @@ function checkGameOver(hands) {
 		return -1;
 	return winnerIdx+1;
 }
+
+function makeNumDropdown(elm, max, active=-1) {
+	let tmpHTML = '';
+	for(let i=1; i<=max; i++)
+		tmpHTML += '<option value="' + i + '">' + i + '</option>';
+	elm.html(tmpHTML);
+
+	if(active != -1)
+		elm.val(active);
+}
+
+function addHistory(str) {
+	$('#history-span').prepend('<span>'+str+'<br></span>');
+}
