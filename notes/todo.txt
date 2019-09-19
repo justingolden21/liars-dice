@@ -2,15 +2,9 @@
 
 option for player names (find everywhere it says 'Player ')
 
-history of game in details summary or in modal?
-
-add rules modal?
-
 make it a PWA?
 
 keep track of number of times each player has won?
-
-option to use number of dice other than 5?
 
 add an AI? dropdown is also number of AI from 0-6, players from 1-6
 
