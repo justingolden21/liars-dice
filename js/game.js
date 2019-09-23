@@ -89,8 +89,8 @@ function renderHand(hand, playerNum, elm) {
 	elm.append('Player ' + playerNum + ': ' + handHTML + '<br>');
 }
 
-function renderHands(renderAll=false, elm=$('#player-hands'), clear=true) {
-	if(clear) elm.html('');
+function renderHands(renderAll=false, elm=$('#player-hands') ) {
+	elm.html('');
 	for(let i=0; i<playerHands.length; i++) {
 		if(currentPlayer==i+1 || renderAll)
 			renderHand(playerHands[i], i+1, elm);
@@ -138,8 +138,7 @@ function endRound() {
 	$('#main-body').css('display','none');
 	
 	$('#end-display-p').css('display','');
-	$('#end-display-p').html('');
-	renderHands(true, $('#end-display-p'), false);
+	renderHands(true, $('#end-display-p') );
 }
 
 // called only by end game button
