@@ -101,6 +101,9 @@ function renderHands(renderAll=false, elm=$('#player-hands') ) {
 
 function renderInfo() {
 	$('#info-p').html('Player ' + currentPlayer + '\'s turn');
+
+	$('#continue-span').html(' <small>(to Player ' + currentPlayer + ')</small>');
+
 	if(currentBet!=null) {
 		let str = 'Player ' + currentBet.player + ' bet ' + getBetStr();
 		$('#info-p').append('<br><br>Current bet: ' + str);
