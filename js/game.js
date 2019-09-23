@@ -111,6 +111,7 @@ function renderInfo() {
 // end of round behaviors
 
 function playerLose(playerNum, count, isSpot = false) {
+	endRound();
 	playerHands[playerNum-1].pop();
 	currentPlayer = playerNum;
 
@@ -118,10 +119,10 @@ function playerLose(playerNum, count, isSpot = false) {
 		' of ' + getBetStr() + '. There ' + (count == 1 ? 'was' : 'were') + ' ' + count + '.';
 	$('#message-p').html(str + '<br>');
 	addHistory(str);
-	endRound();
 }
 
 function playerWin(playerNum) {
+	endRound();
 	for(let i=0; i<playerHands.length; i++) {
 		if(i != playerNum-1)
 			playerHands[i].pop();
@@ -131,7 +132,6 @@ function playerWin(playerNum) {
 	let str = 'Player ' + playerNum + ' won their spot on of ' + getBetStr() + '.<br>';
 	$('#message-p').html(str);
 	addHistory(str);
-	endRound();
 }
 
 function endRound() {
