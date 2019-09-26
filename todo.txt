@@ -25,3 +25,21 @@ make server? host and join? log files:
 
 replace strings with enumerated ints
 AI can learn off of other players?
+
+AI notes
+	input:
+	AI hand
+	total num dice
+	current bet
+
+	output:
+	raise bet to what
+	call
+	spot
+
+Firebase:
+Connected to travis. See this tutorial: https://medium.com/@cpavnn/deploy-to-firebase-hosting-from-github-3772fed05e72. Just push on git and travis auto deploys to firebase.
+Github: https://github.com/justingolden21/liars-dice
+Travis: https://travis-ci.org/justingolden21/liars-dice
+Firebase: https://console.firebase.google.com/u/0/project/play-liars-dice/overview
+Live site on Firebase: https://play-liars-dice.web.app/
