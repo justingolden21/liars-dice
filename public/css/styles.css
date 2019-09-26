@@ -82,6 +82,10 @@ button:not(:disabled):hover i {
 	box-shadow: 4px 4px 0px #333;
 }
 
+.dice-icon.focus {
+	color: #066 !important;
+}
+
 /* other */
 
 select {

@@ -78,22 +78,23 @@ function nextPlayer() {
 // render functions
 
 let numNames = 'zero one two three four five six'.split(' ');
-function renderHand(hand, playerNum, elm) {
+function renderHand(hand, playerNum, elm, focus=false) {
+	console.log(focus);
 	let handHTML = '';
 	for(let i=0; i<hand.length; i++) {
 		if(hand[i]!=-1)
-			handHTML += '<i class="dice-icon fas fa-dice-' + numNames[hand[i] ] + '"></i> ';
+			handHTML += '<i class="dice-icon ' + (focus ? 'focus ' : '') + 'fas fa-dice-' + numNames[hand[i] ] + '"></i> ';
 		else
 			handHTML += '<i class="dice-icon fas fa-square"></i> ';
 	}
 	elm.append('Player ' + playerNum + ': ' + handHTML + '<br>');
 }
 
-function renderHands(renderAll=false, elm=$('#player-hands') ) {
+function renderHands(renderAll=false, elm=$('#player-hands'), focusVal = -1) {
 	elm.html('');
 	for(let i=0; i<playerHands.length; i++) {
 		if(currentPlayer==i+1 || renderAll)
-			renderHand(playerHands[i], i+1, elm);
+			renderHand(playerHands[i], i+1, elm, (playerHands[i]==focusVal || (playerHands[i]==1 && focusVal!=-1) ) );
 		else
 			renderHand(new Array(playerHands[i].length).fill(-1), i+1, elm);
 	}
@@ -141,7 +142,7 @@ function endRound() {
 	$('#main-body').css('display','none');
 	
 	$('#end-display-p').css('display','');
-	renderHands(true, $('#end-display-p') );
+	renderHands(true, $('#end-display-p'), currentBet.value);
 }
 
 // called only by end game button
