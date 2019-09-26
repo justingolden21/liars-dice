@@ -122,5 +122,20 @@ $( ()=> {
 	$('#rules-carousel').on('slid.bs.carousel', ()=> {
 		$('#rules-carousel').carousel('pause');	
 	});
+
+	$('#sign-in-btn').click(signin);
+	$('#sign-out-btn').click(signout);
 	
+});
+
+document.addEventListener('DOMContentLoaded', ()=> {
+	// firebase stuff. just logging for now.
+	try {
+		let app = firebase.app();
+		let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+		console.log(`Firebase SDK loaded with ${features.join(', ')}`);
+	} catch(err) {
+		console.log('Error loading the Firebase SDK.');
+		console.error(err);
+	}
 });

@@ -1,0 +1,20 @@
+#sign-in-btn {
+	cursor: pointer;
+}
+#sign-in-btn:hover {
+	filter: brightness(90%);
+}
+
+/* todo: use classes for hidden instead and toggle them with jquery */
+#sign-out-btn, #profile-info {
+	display: none;
+}
+#account-div {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+#profile-img {
+	width: 48px;
+	border-radius: 50%;
+}

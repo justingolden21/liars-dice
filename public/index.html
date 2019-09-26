@@ -25,12 +25,22 @@
 	<script defer src="/__/firebase/init.js"></script>
 
 
+
+<!-- Firebase UI signin
+https://github.com/firebase/firebaseui-web#demo -->
+<script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.css" />
+
+
 	<!-- local files -->
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/signin.css">
 	<script src="js/util.js"></script>
 	<script src="js/bet.js"></script>
 	<script src="js/listeners.js"></script>
 	<script src="js/game.js"></script>
+	<script src="js/signin.js"></script>
+	<script src="js/database.js"></script>
 
 </head>
 <body>
@@ -199,21 +209,16 @@
 
 
 
-    <script>
-   	  console.log('testing another commit');
-      document.addEventListener('DOMContentLoaded', function() {
+<div id="account-div">
+	<img id="sign-in-btn" tabindex="1" src="img/btn_google_signin_light_normal_web.png">
 
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          console.log(`Firebase SDK loaded with ${features.join(', ')}`);
-        } catch (e) {
-          console.log('Error loading the Firebase SDK.');
-          console.error(e);
-        }
-      });
-    </script>
-
+	<button id="sign-out-btn" class="btn btn-sm btn-dark"><i class="fas fa-sign-out-alt"></i> Signout</button>
+	<div id="profile-info">
+		<span id="profile-name"></span>
+		<img id="profile-img">
+	</div>
+	<p id="toast"></p>
+</div>
 
 </body>
 </html>

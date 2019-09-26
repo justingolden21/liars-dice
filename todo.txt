@@ -1,5 +1,7 @@
 ==== todo ====
 
+get the name github integration with travis to work
+
 option for player names (find everywhere it says 'Player ')
 
 info tab with contact email and about website made by me
@@ -43,3 +45,5 @@ Github: https://github.com/justingolden21/liars-dice
 Travis: https://travis-ci.org/justingolden21/liars-dice
 Firebase: https://console.firebase.google.com/u/0/project/play-liars-dice/overview
 Live site on Firebase: https://play-liars-dice.web.app/
+
+Google signin btn img from: https://developers.google.com/identity/branding-guidelines
