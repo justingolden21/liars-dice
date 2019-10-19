@@ -6,11 +6,11 @@ let currentBet, currentPlayer; // bet object and player number
 // game functions
 
 function newGame(numPlayers, numDice=5) {
-	currentPlayer = 1;
 	playerHands = [];
-
 	for(let i=0; i<numPlayers; i++)
 		playerHands.push(new Array(numDice).fill(0) );
+
+	setCurrentPlayer(1);
 
 	$('#bet-modal').modal('hide');
 	$('#continue-btn').css('display','none');
@@ -75,6 +75,12 @@ function nextPlayer() {
 	$('#continue-btn').css('display','').focus();
 }
 
+function setCurrentPlayer(playerNum) {
+	currentPlayer = playerNum;
+	if(playerHands[currentPlayer-1].length==0)
+		nextPlayer();
+}
+
 // render functions
 
 let numNames = 'zero one two three four five six'.split(' ');
@@ -117,7 +123,7 @@ function renderInfo() {
 function playerLose(playerNum, count, isSpot = false) {
 	endRound();
 	playerHands[playerNum-1].pop();
-	currentPlayer = playerNum;
+	setCurrentPlayer(playerNum);
 
 	let str = 'Player ' + playerNum + ' lost ' + (isSpot ? 'their spot on' : 'on bet') + 
 		' of ' + getBetStr() + '. There ' + (count == 1 ? 'was' : 'were') + ' ' + count + '.';
@@ -131,7 +137,7 @@ function playerWin(playerNum) {
 		if(i != playerNum-1)
 			playerHands[i].pop();
 	}
-	currentPlayer = playerNum;
+	setCurrentPlayer(playerNum);
 
 	let str = 'Player ' + playerNum + ' won their spot on of ' + getBetStr() + '.<br>';
 	$('#message-p').html(str);
