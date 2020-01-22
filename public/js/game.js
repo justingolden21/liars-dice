@@ -33,6 +33,7 @@ function newRound(justStarted=false) {
 		$('#info-p').html(str);
 
 		$('#new-game-btn').css('display','').focus();
+		$('#continue-btn').css('display','none');
 		return;
 	}
 
