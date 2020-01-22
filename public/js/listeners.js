@@ -61,6 +61,25 @@ $( ()=> {
 		$('#end-display-p').css('display','none');
 	});
 
+	// quick increment btns
+
+	$('#bet-amount-increment-btn').click( ()=> {
+		let curVal = parseInt($('#bet-amount-select').val() );
+		if(curVal < numDice(playerHands) )
+			$('#bet-amount-select').val(curVal+1);
+	});
+
+	$('#bet-value-increment-btn').click( ()=> {
+		let curVal = parseInt($('#bet-value-select').val() );
+		if(curVal < 6) {
+			$('#bet-value-select').val(curVal+1);
+		}
+		else if(parseInt($('#bet-amount-select').val() ) < numDice(playerHands) ) {
+			$('#bet-value-select').val(2);
+			$('#bet-amount-increment-btn').click();
+		}
+	});
+
 	// modal show/hide listeners, focus correct input
 
 	$('#bet-modal').on('shown.bs.modal', (e)=> {

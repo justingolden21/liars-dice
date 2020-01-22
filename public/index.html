@@ -76,10 +76,14 @@ https://github.com/firebase/firebaseui-web#demo -->
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				<label class="label-lg">Amount:</label>
+				<label class="label-lg">Amount:
+					<button id="bet-amount-increment-btn" class="btn btn-sm btn-dark"><i class="fas fa-plus"></i></button>
+				</label>
 				<select id="bet-amount-select" class="form-control"></select>
 				<br>
-				<label class="label-lg">Value:</label>
+				<label class="label-lg">Value:
+					<button id="bet-value-increment-btn" class="btn btn-sm btn-dark"><i class="fas fa-plus"></i></button>
+				</label>
 				<select id="bet-value-select" class="form-control form-control-lg">
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -179,6 +183,7 @@ https://github.com/firebase/firebaseui-web#demo -->
 								<div class="carousel-item">
 									<p>If a player calls a bet, they are claiming that it's false. The player who is wrong (between the betting player and the calling player) loses a dice, and then a new round begins, and players roll their dice again.</p>
 									<p>If a player spots, they are claiming that there are <b>exactly</b> that many of that die. If they are wrong they lose a die, but if they are correct, <b>every</b> other player loses a die.</p>
+									<p>Who Starts: The player who lost goes first next round. However, on a successful spot, the player who spotted goes first. If a player would go first next round but lost, the player after them goes first.</p>
 									<p>When you run out of dice, you lose, and the last one standing wins!</p>
 								</div>
 							</div>

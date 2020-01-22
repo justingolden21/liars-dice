@@ -86,7 +86,7 @@ function setCurrentPlayer(playerNum) {
 
 let numNames = 'zero one two three four five six'.split(' ');
 function renderHand(hand, playerNum, elm, focus=false) {
-	console.log(focus);
+	// console.log(focus);
 	let handHTML = '';
 	for(let i=0; i<hand.length; i++) {
 		if(hand[i]!=-1)
