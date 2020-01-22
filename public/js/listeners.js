@@ -80,6 +80,16 @@ $( ()=> {
 		}
 	});
 
+	// share
+
+	$('#link-copy-btn').click( ()=> {
+		let tmp = $('<input type="text">').appendTo(document.body);
+		tmp.val(window.location.href);
+		tmp.select();
+		document.execCommand('copy');
+		tmp.remove();
+	});
+
 	// modal show/hide listeners, focus correct input
 
 	$('#bet-modal').on('shown.bs.modal', (e)=> {

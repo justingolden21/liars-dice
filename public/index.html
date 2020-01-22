@@ -47,7 +47,7 @@ https://github.com/firebase/firebaseui-web#demo -->
 
 <p>
 	<b><i class="fas fa-dice"></i> Pass the Phone &mdash; Liar's Dice</b>
-	<button id="settings-btn" title="Settings" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#settings-modal"><i class="fas fa-cog"></i> </button>
+	<button id="settings-btn" title="Settings" class="btn btn-sm btn-dark icon-btn" data-toggle="modal" data-target="#settings-modal"><i class="fas fa-cog"></i> </button>
 </p>
 <hr>
 
@@ -77,12 +77,12 @@ https://github.com/firebase/firebaseui-web#demo -->
 			</div>
 			<div class="modal-body">
 				<label class="label-lg">Amount:
-					<button id="bet-amount-increment-btn" class="btn btn-sm btn-dark"><i class="fas fa-plus"></i></button>
+					<button id="bet-amount-increment-btn" class="btn btn-sm btn-dark icon-btn"><i class="fas fa-plus"></i></button>
 				</label>
 				<select id="bet-amount-select" class="form-control"></select>
 				<br>
 				<label class="label-lg">Value:
-					<button id="bet-value-increment-btn" class="btn btn-sm btn-dark"><i class="fas fa-plus"></i></button>
+					<button id="bet-value-increment-btn" class="btn btn-sm btn-dark icon-btn"><i class="fas fa-plus"></i></button>
 				</label>
 				<select id="bet-value-select" class="form-control form-control-lg">
 					<option value="2">2</option>
@@ -145,6 +145,9 @@ https://github.com/firebase/firebaseui-web#demo -->
 					<li class="nav-item">
 						<a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fas fa-history"></i> History</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false"><i class="fas fa-info"></i> Info</a>
+					</li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
@@ -204,6 +207,20 @@ https://github.com/firebase/firebaseui-web#demo -->
 						<button id="clear-history-btn" class="btn btn-dark btn-sm"><i class="fas fa-trash"></i> Clear</button>
 						<br>
 						<span id="history-span"></span>
+					</div>
+					<div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+						<br>
+						Made by <a href="https://justingolden.me">Justin Golden</a>.
+						<br>
+						<a href="mailto:justingolden@rgbstudios.org"><i class="fas fa-envelope"></i> justingolden@rgbstudios.org</a>
+						<hr>
+						Share / Copy URL:
+<!-- 						<div class="input-group">
+							<input id="link-input" class="form-control" type="text" value="https://play-liars-dice.web.app">
+							<div class="input-group-append"> -->
+								<button id="link-copy-btn" class="btn btn-sm btn-dark icon-btn"><i class="fas fa-copy"></i></button>
+<!-- 							</div>
+						</div> -->
 					</div>
 				</div>
 

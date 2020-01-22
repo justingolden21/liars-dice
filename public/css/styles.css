@@ -33,6 +33,9 @@ button:not(.close) {
 	margin: 10px;
 	color: #fff !important;
 }
+/*.input-group-append button {
+	margin: 0px;
+}*/
 button i {
 	color: #66c;
 	transition: 0.1s linear;
@@ -41,7 +44,7 @@ button:not(:disabled):hover i {
 	transform: scale(1.25);
 }
 
-#settings-btn i {
+.icon-btn i {
 	color: #fff;
 }
 #settings-btn:hover i {
