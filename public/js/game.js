@@ -105,6 +105,7 @@ function renderHands(renderAll=false, elm=$('#player-hands'), focusVal = -1) {
 		else
 			renderHand(new Array(playerHands[i].length).fill(-1), i+1, elm);
 	}
+	elm.append('There are '+numDice(playerHands)+' dice<br>');
 }
 
 function renderInfo() {
