@@ -1,5 +1,7 @@
 ==== todo ====
 
+advanced setting each player starts with specific number of dice
+
 get the name github integration with travis to work
 
 option for player names (find everywhere it says 'Player ')
