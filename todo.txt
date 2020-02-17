@@ -14,6 +14,9 @@ keep track of number of times each player has won? "stats" tab?
 
 add an AI? dropdown is also number of AI from 0-6, players from 1-6
 
+store gamestate in base64? can import/export to play later? url param?
+store num players, dice per player, then vals? don't store vals, just reroll?
+
 ==== notes ====
 
 make server? host and join? log files:
