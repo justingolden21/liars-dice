@@ -131,9 +131,9 @@ function playerLose(playerNum, count, isSpot = false) {
 	playerHands[playerNum-1].pop();
 	currentPlayer = playerNum;
 
-	let str = 'Player ' + playerNum + ' lost ' + (isSpot ? 'their spot on' : 'on bet') + 
+	let str = 'Player ' + playerNum + ' lost ' + (isSpot ? 'their spot on' : 'on their bet') + 
 		' of ' + getBetStr() + '. There ' + (count == 1 ? 'was' : 'were') + ' ' + count + '.';
-	$('#message-p').html(str + '<br>');
+	$('#message-p').html(str);
 	addHistory(str);
 	addHistory(getHandStrings() );
 }
