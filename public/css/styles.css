@@ -77,13 +77,8 @@ button:not(:disabled):hover i {
 	font-size: 150%;
 	margin: 5px;
 }
-.fas.fa-dice-one {
+.fas.fa-dice-one, .dice-icon.focus {
 	color: #339;
-	box-shadow: 4px 4px 0px #333;
-}
-
-.dice-icon.focus {
-	color: #066 !important;
 }
 
 /* other */
