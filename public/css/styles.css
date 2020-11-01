@@ -11,7 +11,7 @@ body {
 p, button:not(.btn-sm), label.label-lg, .modal-title {
 	font-size: 150% !important;
 }
-p, label, .modal-title {
+p, a, label, .modal-title {
 	color: #333 !important;
 }
 .tab-pane p {

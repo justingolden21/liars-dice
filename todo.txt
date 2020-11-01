@@ -1,3 +1,7 @@
+==== bugs ====
+
+carousel doesn't pause...
+
 ==== todo ====
 
 option for player names (find everywhere it says 'Player ')
