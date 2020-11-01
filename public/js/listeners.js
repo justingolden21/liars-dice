@@ -11,9 +11,9 @@ $( ()=> {
 	});
 
 	$('#submit-bet-btn').click( ()=> {
-		if(betIsValid(currentBet, new Bet(-1, $('#bet-amount-select').val(), $('#bet-value-select').val() ) ) ) {
+		if(betIsValid(currentBet, new Bet(-1, parseInt($('#bet-amount-select').val() ), parseInt($('#bet-value-select').val() ) ) ) ) {
 			$('#message-p').html('');
-			currentBet = new Bet(currentPlayer, $('#bet-amount-select').val(), $('#bet-value-select').val() );
+			currentBet = new Bet(currentPlayer, parseInt($('#bet-amount-select').val() ), parseInt($('#bet-value-select').val() ) );
 			nextPlayer();
 			renderHands();
 			renderInfo();
