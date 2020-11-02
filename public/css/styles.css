@@ -11,7 +11,7 @@ body {
 	background-color: #ccf;
 }
 p, button:not(.btn-sm), label.label-lg, .modal-title {
-	font-size: 125% !important;
+	font-size: 135% !important;
 }
 /*#message-p, #info-p, #end-display-p {
 }*/
@@ -81,7 +81,7 @@ button:not(:disabled):hover i {
 	box-shadow: 4px 4px 0px #666;
 	border-radius: 10%;
 
-	font-size: 125%;
+	font-size: 135%;
 	margin: 5px;
 	padding-right: 2px;
 }
