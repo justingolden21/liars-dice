@@ -4,8 +4,6 @@ carousel doesn't pause...
 
 ==== todo ====
 
-option for player names (find everywhere it says 'Player ')
-
 info tab with contact email and about website made by me
 
 make it a PWA?
