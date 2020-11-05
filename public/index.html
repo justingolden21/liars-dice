@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 	<title>Liar's Dice</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="title=" content="Liar's Dice">
+	<meta name="robots" content="index, follow">
+	<meta name="description" content="Pass the phone to play a game of liar's dice, free, no ads, and offline">
+	<meta name="keywords" content="liar's dice, play liar's dice, liar's dice online, liar's dice website, free liar's dice, play liar's dice free, free online games, free online board game, dice game, dice games, free online dice games">
 	<link rel="shortcut icon" href="img/icon.png">
 
 	<!-- CDNs -->
@@ -56,10 +60,10 @@
 				<button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
 			</div>
 			<div class="modal-body">
-				<label class="label-lg">Amount:</label>
+				<label class="label-lg" for="bet-amount-select">Amount:</label>
 				<select id="bet-amount-select" class="form-control"></select>
 				<br>
-				<label class="label-lg">Value:</label>
+				<label class="label-lg" for="bet-value-select">Value:</label>
 				<select id="bet-value-select" class="form-control form-control-lg">
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -85,7 +89,7 @@
 				<button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
 			</div>
 			<div class="modal-body">
-				<label class="label-lg">How Many Players?</label>
+				<label class="label-lg" for="num-players-select">How Many Players?</label>
 				<select id="num-players-select" class="form-control form-control-lg">
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -95,6 +99,18 @@
 					<option value="7">7</option>
 					<option value="8">8</option>
 				</select>
+
+				<button class="btn btn-dark btn-sm" type="button" data-toggle="collapse" data-target="#settings-collapse" aria-expanded="false" aria-controls="settings-collapse"><i class="fas fa-cog"></i> More Settings</button>
+				<div class="collapse" id="settings-collapse">
+					<div class="card card-body">
+						<label for="num-dice-select">Dice Per Player:</label>
+						<select id="num-dice-select" class="form-control"></select>
+						<br>
+						<label>Player Names:</label>
+						<div id="player-names"></div>
+					</div>
+				</div>
+
 				<br>
 				<button id="begin-game-btn" class="btn btn-dark">Begin! <i class="fas fa-long-arrow-alt-right"></i></button>
 			</div>
@@ -124,9 +140,6 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-						<br>
-						<label>Dice Per Player:</label>
-						<select id="num-dice-select" class="form-control"></select>
 						<br>
 						<button id="reset-settings-btn" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Reset Settings</button>
 						<button id="fullscreen-btn" class="btn btn-dark btn-sm"><i class="fas fa-compress"></i> Fullscreen</button>

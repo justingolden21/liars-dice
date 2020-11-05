@@ -2,6 +2,7 @@
 
 let playerHands = []; // array of hands
 let currentBet, currentPlayer; // bet object and player number
+let playerNames = [];
 
 // for upload to db
 let gameHistory = [];
@@ -13,9 +14,14 @@ let gameDice = -1;
 function newGame(numPlayers, numDice=5) {
 	currentPlayer = 1;
 	playerHands = [];
-
 	for(let i=0; i<numPlayers; i++)
 		playerHands.push(new Array(numDice).fill(0) );
+
+	// player names
+	playerNames = [];
+	for(let i=0; i<numPlayers; i++) {
+		playerNames[i] = $(`#player-${i+1}-name`).val();
+	}
 
 	$('#bet-modal').modal('hide');
 	$('#continue-btn').css('display','none');
@@ -26,18 +32,19 @@ function newGame(numPlayers, numDice=5) {
 	$('#continue-btn').click();
 	$('#main-body').css('display','');
 
-	// history only
-	addHistory('Started new game with ' + numPlayers + ' players');
-
 	// for db
 	gamePlayers = numPlayers;
 	gameDice = numDice;
+
+	// history only
+	addHistory('Started new game with ' + numPlayers + ' players: ' + playerNames.join(', ') );
 }
 
 function newRound(justStarted=false) {
 	let winner = checkGameOver(playerHands);
 	if(winner != -1) {
-		let str = 'Player ' + winner + ' wins!';
+		// let str = 'Player ' + winner + ' wins!';
+		let str = playerNames[winner-1] + ' wins!';
 		addHistory('<hr>' + str);
 		$('#info-p').html(str);
 
@@ -45,7 +52,7 @@ function newRound(justStarted=false) {
 
 		// for db
 		gameHistory.push('p' + winner + ' wins');
-		uploadGame(gamePlayers, gameDice, gameHistory);
+		uploadGame(gamePlayers, gameDice, gameHistory, playerNames);
 		gameHistory = [];
 		gamePlayers = gameDice = -1;
 
@@ -73,8 +80,10 @@ function newRound(justStarted=false) {
 	// history only
 	if(!justStarted) {
 		let str = 'New Round: ';
-		for(let i=0; i<playerHands.length; i++)
-			str += 'Player ' + (i+1) + ' has ' + playerHands[i].length + ' dice. ';
+		for(let i=0; i<playerHands.length; i++) {
+			// str += 'Player ' + (i+1) + ' has ' + playerHands[i].length + ' dice. ';
+			str += playerNames[i] + ' has ' + playerHands[i].length + ' dice. ';
+		}
 		addHistory(str);
 	}
 
@@ -104,7 +113,8 @@ function getHandString(hand, playerNum, focusVal=-1) {
 		else
 			handHTML += '<i class="dice-icon fas fa-square"></i> ';
 	}
-	return 'Player ' + playerNum + ': ' + handHTML + '<br>';
+	// return 'Player ' + playerNum + ': ' + handHTML + '<br>';
+	return playerNames[playerNum-1] + ': ' + handHTML + '<br>';
 }
 
 function getHandStrings() {
@@ -142,12 +152,15 @@ function renderHands(renderAll=false, elm=$('#player-hands'), focusVal=-1) {
 }
 
 function renderInfo() {
-	$('#info-p').html('Player ' + currentPlayer + '\'s turn');
+	// $('#info-p').html('Player ' + currentPlayer + '\'s turn');
+	$('#info-p').html(playerNames[currentPlayer-1] + '\'s turn');
 
-	$('#continue-span').html(' <small>(to Player ' + currentPlayer + ')</small>');
+	// $('#continue-span').html(' <small>(to Player ' + currentPlayer + ')</small>');
+	$('#continue-span').html(' <small>(to ' + playerNames[currentPlayer-1] + ')</small>');
 
 	if(currentBet!=null) {
-		let str = 'Player ' + currentBet.player + ' bet ' + getBetStr();
+		// let str = 'Player ' + currentBet.player + ' bet ' + getBetStr();
+		let str = playerNames[currentBet.player-1] + ' bet ' + getBetStr();
 		$('#info-p').append('<br><br>Current bet: ' + str);
 		addHistory(str);
 		gameHistory.push('p' + currentBet.player + ' bet ' + getBetStr(true) );
@@ -161,7 +174,9 @@ function playerLose(playerNum, count, isSpot = false) {
 	playerHands[playerNum-1].pop();
 	currentPlayer = playerNum;
 
-	let str = 'Player ' + playerNum + ' lost ' + (isSpot ? 'their spot on' : 'on their bet') + 
+	// let str = 'Player ' + playerNum + ' lost ' + (isSpot ? 'their spot on' : 'on their bet') + 
+	// 	' of ' + getBetStr() + '. There ' + (count == 1 ? 'was' : 'were') + ' ' + count + '.';
+	let str = playerNames[playerNum-1] + ' lost ' + (isSpot ? 'their spot on' : 'on their bet') + 
 		' of ' + getBetStr() + '. There ' + (count == 1 ? 'was' : 'were') + ' ' + count + '.';
 	$('#message-p').html(str);
 	addHistory(str);
@@ -177,7 +192,8 @@ function playerWin(playerNum) {
 	}
 	currentPlayer = playerNum;
 
-	let str = 'Player ' + playerNum + ' won their spot on of ' + getBetStr() + '.<br>';
+	// let str = 'Player ' + playerNum + ' won their spot on of ' + getBetStr() + '.<br>';
+	let str = playerNames[playerNum-1] + ' won their spot on of ' + getBetStr() + '.<br>';
 	$('#message-p').html(str);
 	addHistory(str);
 	addHistory(getHandStrings() );
@@ -214,12 +230,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 });
 
-function uploadGame(dice, players, history) {
+function uploadGame(dice, players, history, names) {
 	const db = firebase.firestore();
 	db.collection('games').add({
 		dice: dice,
 		players: players,
 		date: Date.now(),
-		history: history
+		history: history,
+		names: names,
 	});
 }

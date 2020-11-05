@@ -14,6 +14,8 @@ keep track of number of times each player has won? "stats" tab?
 
 add an AI? dropdown is also number of AI from 0-6, players from 1-6
 
+use tailwind
+
 ==== notes ====
 
 make server? host and join? log files:

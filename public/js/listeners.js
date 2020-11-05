@@ -112,6 +112,15 @@ $( ()=> {
 
 	$('#fullscreen-btn').click(toggleFullscreen);
 
+	$('#num-players-select').change( ()=> {
+		let numPlayers = parseInt($('#num-players-select').val() );
+		let html = '';
+		for(let i=0; i<numPlayers; i++) {
+			html += `<input type="text" id="player-${i+1}-name" class="form-control" value="Player ${i+1}" maxlength="30">`;
+		}
+		$('#player-names').html(html);
+	}).change();
+
 	// misc setup
 
 	makeNumDropdown($('#num-dice-select'), 20, 5);

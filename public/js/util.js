@@ -58,6 +58,7 @@ function makeNumDropdown(elm, max, active=-1) {
 
 function addHistory(str) {
 	$('#history-span').prepend('<span>'+str+'<br></span>');
+	console.log(str);
 }
 
 //https://stackoverflow.com/questions/3900701/onclick-go-full-screen

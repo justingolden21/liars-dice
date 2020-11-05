@@ -8,7 +8,8 @@
 body {
 	margin: 50px;
 	background-image: url('../img/icon-opacity.svg');
-	background-color: #ccf;
+	/*background-color: #ccf;*/
+	background-color: #ddf;
 }
 p, button:not(.btn-sm), label.label-lg, .modal-title {
 	font-size: 135% !important;
