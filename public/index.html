@@ -15,22 +15,12 @@
 
 	<!-- FIREBASE -->
 	<!-- update the version number as needed -->
-	<script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
-	<!-- include only the Firebase features as you need -->
-	<script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
-	<script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
-	<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>
-	<script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
-	<!-- initialize the SDK after all desired features are loaded -->
-	<script defer src="/__/firebase/init.js"></script>
-
-
-	<!-- local files -->
-	<link rel="stylesheet" href="css/styles.css">
-	<script src="js/util.js"></script>
-	<script src="js/bet.js"></script>
-	<script src="js/listeners.js"></script>
-	<script src="js/game.js"></script>
+	<!-- https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="/__/firebase/7.15.0/firebase-app.js"></script>
+	<script src="/__/firebase/7.15.0/firebase-analytics.js"></script>
+	<script src="/__/firebase/7.15.0/firebase-auth.js"></script>
+	<script src="/__/firebase/7.15.0/firebase-firestore.js"></script>
+	<script src="/__/firebase/init.js"></script>
 
 </head>
 <body>
@@ -197,23 +187,12 @@
 	</div>
 </div>
 
-
-
-    <script>
-   	  console.log('testing another commit');
-      document.addEventListener('DOMContentLoaded', function() {
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          console.log(`Firebase SDK loaded with ${features.join(', ')}`);
-        } catch (e) {
-          console.log('Error loading the Firebase SDK.');
-          console.error(e);
-        }
-      });
-    </script>
-
+<!-- local files -->
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/util.js"></script>
+<script src="js/bet.js"></script>
+<script src="js/listeners.js"></script>
+<script src="js/game.js"></script>
 
 </body>
 </html>

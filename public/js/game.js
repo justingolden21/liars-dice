@@ -3,6 +3,11 @@
 let playerHands = []; // array of hands
 let currentBet, currentPlayer; // bet object and player number
 
+// for upload to db
+let gameHistory = [];
+let gamePlayers = -1;
+let gameDice = -1;
+
 // game functions
 
 function newGame(numPlayers, numDice=5) {
@@ -23,6 +28,10 @@ function newGame(numPlayers, numDice=5) {
 
 	// history only
 	addHistory('Started new game with ' + numPlayers + ' players');
+
+	// for db
+	gamePlayers = numPlayers;
+	gameDice = numDice;
 }
 
 function newRound(justStarted=false) {
@@ -33,6 +42,13 @@ function newRound(justStarted=false) {
 		$('#info-p').html(str);
 
 		$('#new-game-btn').css('display','').focus();
+
+		// for db
+		gameHistory.push('p' + winner + ' wins');
+		uploadGame(gamePlayers, gameDice, gameHistory);
+		gameHistory = [];
+		gamePlayers = gameDice = -1;
+
 		return;
 	}
 
@@ -62,6 +78,7 @@ function newRound(justStarted=false) {
 		addHistory(str);
 	}
 
+	gameHistory.push('hands: ' + getHandStringsPlain() );
 }
 
 function nextPlayer() {
@@ -98,6 +115,18 @@ function getHandStrings() {
 	return rtn.slice(0,-4); // cut off last <br>
 }
 
+function getHandStringsPlain() {
+	let rtn = '';
+	for(let i=0; i<playerHands.length; i++) {
+		rtn += 'p' + (i+1) + ': ';
+		for(let j=0; j<playerHands[i].length; j++) {
+			rtn += playerHands[i][j];
+		}
+		rtn += ', ';
+	}
+	return rtn.slice(0,-2); // cut trailing comma
+}
+
 function renderHand(hand, playerNum, elm, focusVal=-1) {
 	elm.append(getHandString(hand, playerNum, focusVal) );
 }
@@ -121,6 +150,7 @@ function renderInfo() {
 		let str = 'Player ' + currentBet.player + ' bet ' + getBetStr();
 		$('#info-p').append('<br><br>Current bet: ' + str);
 		addHistory(str);
+		gameHistory.push('p' + currentBet.player + ' bet ' + getBetStr(true) );
 	}
 }
 
@@ -136,6 +166,7 @@ function playerLose(playerNum, count, isSpot = false) {
 	$('#message-p').html(str);
 	addHistory(str);
 	addHistory(getHandStrings() );
+	gameHistory.push('p' + playerNum + ' lost ' + (isSpot ? ' spot ' : ' bet ') + getBetStr(true) );
 }
 
 function playerWin(playerNum) {
@@ -150,6 +181,7 @@ function playerWin(playerNum) {
 	$('#message-p').html(str);
 	addHistory(str);
 	addHistory(getHandStrings() );
+	gameHistory.push('p' + playerNum + ' won spot ' + getBetStr(true) );
 }
 
 
@@ -169,4 +201,25 @@ function endGame() {
 	$('#info-p').html('');
 	$('#new-game-btn').css('display','').focus();
 	addHistory('<hr>Game ended by user.');
+}
+
+// db
+
+document.addEventListener('DOMContentLoaded', function() {
+	try {
+		let app = firebase.app();
+	} catch (e) {
+		console.log('Error loading the Firebase SDK.');
+		console.error(e);
+	}
+});
+
+function uploadGame(dice, players, history) {
+	const db = firebase.firestore();
+	db.collection('games').add({
+		dice: dice,
+		players: players,
+		date: Date.now(),
+		history: history
+	});
 }

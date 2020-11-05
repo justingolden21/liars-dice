@@ -3,6 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
+    "site": "playliarsdice",
     "public": "public",
     "ignore": [
       "firebase.json",
