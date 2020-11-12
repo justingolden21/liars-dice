@@ -9,7 +9,12 @@ body {
 	margin: 50px;
 	background-image: url('../img/icon-opacity.svg');
 	/*background-color: #ccf;*/
-	background-color: #ddf;
+	background-color: #ccf;
+}
+#inner-div {
+	background-color: rgba(255,255,255,0.5);
+	padding-top: 20px;
+	padding: 5px;
 }
 p, button:not(.btn-sm), label.label-lg, .modal-title {
 	font-size: 135% !important;
@@ -34,15 +39,15 @@ p, a, label, .modal-title {
 
 /* buttons */
 
-button:not(.close) {
+button {
 	margin: 10px;
 	color: #fff !important;
 }
-button i:not(.close i) {
+button i:not(.modal-header .btn i) {
 	color: #ccf;
 }
-.close i {
-	color: #339;
+.modal-header .btn {
+	margin: 0px;
 }
 button:not(:disabled):hover i {
 	transition: 0.1s linear;

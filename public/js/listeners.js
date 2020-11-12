@@ -126,10 +126,6 @@ $( ()=> {
 	makeNumDropdown($('#num-dice-select'), 20, 5);
 
 	$('#rules-carousel').carousel('pause');
-
-	// backup
-	$('#rules-carousel').on('slid.bs.carousel', ()=> {
-		$('#rules-carousel').carousel('pause');	
-	});
+	setTimeout( ()=> $('#rules-carousel').carousel('pause'), 1000);
 	
 });
